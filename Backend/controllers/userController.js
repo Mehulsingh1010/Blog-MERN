@@ -65,3 +65,11 @@ export const logout = catchAsyncErrors((req, res, next) => {
         message: "User logged out!",
       });
   });
+
+  export const getmyprofile=catchAsyncErrors((req,res,next)=>{
+    const user=req.user;
+    res.status(200).json({
+        success:true,
+        user,
+    })
+  });
