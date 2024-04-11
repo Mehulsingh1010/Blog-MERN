@@ -2,16 +2,40 @@ import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js"
 import Errorhandler, { errorMiddlewae } from "../middlewares/error.js"
 import { User } from "../models/userSchema.js"
 import { sendToken } from "../utils/jwtToken.js"
-
+import cloudinary from "cloudinary"
 export const register = catchAsyncErrors (async (req,res,next)=>{
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return next(new ErrorHandler("User Avatar Required!", 400));
+      }
+      const { avatar } = req.files;
+      const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
+      if (!allowedFormats.includes(avatar.mimetype)) {
+        return next(
+          new ErrorHandler(
+            "Invalid file type. Please provide your avatar in png, jpg or webp format.",
+            400
+          )
+        );
+      }
+
     const {name,email,password,phone,role,education} = req.body;
     if(!name || !email || !password || !phone || !role || !education){
         return next(new Errorhandler("Please fill full details"))
     }
+
     let user=await User.findOne({email});
     if(user){
         return next(new Errorhandler("User already exists", 400));
     }
+
+        const cloudinaryResponse = await cloudinary.uploader.upload(
+            avatar.tempFilePath
+        );
+        if(!cloudinaryResponse || !cloudinaryResponse.error){
+            console.error("Cloudinary error : ",cloudinaryResponse.error || "unknown cloudinary error");
+        }
+
     user = await User.create({
         name,
         email,
@@ -19,6 +43,11 @@ export const register = catchAsyncErrors (async (req,res,next)=>{
         phone,
         role,
         education,
+        avatar:{
+            public_id:cloudinaryResponse.public_id,
+            url: cloudinaryResponse.secure_url,
+            
+        }
     });
 
     sendToken(user,200,"user registered succesfully",res);
@@ -73,3 +102,12 @@ export const logout = catchAsyncErrors((req, res, next) => {
         user,
     })
   });
+
+  export const getAllauthors= catchAsyncErrors(async(req,res,next)=>{
+    const authors=await User.find({role:"Author"});
+    res.status(200).json({
+        success:true,
+        authors,
+    });
+  })
+

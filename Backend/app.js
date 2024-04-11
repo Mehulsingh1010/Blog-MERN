@@ -6,7 +6,7 @@ import { dbConnection } from "./database/dbConnection.js";
 import { errorMiddlewae } from "./middlewares/error.js"
 import userRouter from "./Routes/UserRouter.js";
 // import blogRouter from "./Routes/BlogRouter.js";
-
+import fileUpload from "express-fileupload";
 
 
 
@@ -22,7 +22,11 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir:"/tmp/",
+    })
+);
 app.use("/api/v1", userRouter);
 dbConnection();
 app.use(errorMiddlewae);
