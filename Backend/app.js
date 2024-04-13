@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import { dbConnection } from "./database/dbConnection.js";
 import { errorMiddlewae } from "./middlewares/error.js"
 import userRouter from "./Routes/UserRouter.js";
-// import blogRouter from "./Routes/BlogRouter.js";
+import blogRouter from "./Routes/BlogRouter.js";
 import fileUpload from "express-fileupload";
 
 
@@ -27,8 +27,9 @@ app.use(fileUpload({
     tempFileDir:"/tmp/",
     })
 );
-app.use("/api/v1", userRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/blog", blogRouter);
+
 dbConnection();
 app.use(errorMiddlewae);
-
 export default app;
