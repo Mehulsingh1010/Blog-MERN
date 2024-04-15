@@ -11,11 +11,13 @@ import About from "./Components/pages/About"
 import AllAuthors from "./Components/pages/AllAuthors"
 import Dashboard from "./Components/pages/Dashboard"
 import UpdateBlog from "./Components/pages/UpdateBlog"
-
+import Navbar from "./Components/layout/Navbar"
+import Footer from './Components/layout/Footer'
 const App = () => {
   return (
     <>
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home/> }/>
           <Route path="/register" element={<Register/> }/>
@@ -27,6 +29,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard/> }/>
           <Route path="/bblog.update.:id" element={<UpdateBlog/> }/>
         </Routes>
+        <Footer />
       </Router>
     </>
   )
