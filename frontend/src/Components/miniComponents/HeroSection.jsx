@@ -12,7 +12,7 @@ const HeroSection = () => {
       blogs && blogs.length > 0 ? (blogs.slice(0,2).map(element =>{
         return(
           <Link to={'/blog/${element._id}'} className='card' key={element._id}>
-            <img src={element.mainImage.url} alt="blog" className='mainImg'/>
+            <img src={element.mainImage.url} alt="blog" className='blogImg'/>
             <h1>{element.title}</h1>
             <div className="writer_section">
               <div className="author">

@@ -6,13 +6,13 @@ import cloudinary from "cloudinary"
 export const register = catchAsyncErrors (async (req,res,next)=>{
 
     if (!req.files || Object.keys(req.files).length === 0) {
-        return next(new ErrorHandler("User Avatar Required!", 400));
+        return next(new Errorhandler("User Avatar Required!", 400));
       }
       const { avatar } = req.files;
       const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
       if (!allowedFormats.includes(avatar.mimetype)) {
         return next(
-          new ErrorHandler(
+          new Errorhandler(
             "Invalid file type. Please provide your avatar in png, jpg or webp format.",
             400
           )

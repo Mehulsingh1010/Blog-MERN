@@ -7,16 +7,21 @@ import LatestBlogs from "../miniComponents/LatestBlog";
 import PopularAuthors from "../miniComponents/PopularAuthor";
 
 const Home = () => {
-  const {mode} = useContext(Context);
+  const {mode, blogs} = useContext(Context);
   return (
-    <article className={
-      mode ==="dark"?"dark-bg" : "light-bg"}>
+<article className={mode === "dark" ? "dark-bg" : "light-bg"}>
         <HeroSection />
         <TrendingBlogs />
-        <LatestBlogs />
+        <LatestBlogs heading={"Latest Blogs"} />
         <PopularAuthors />
-    </article>
+      </article>
   )
 }
 
 export default Home
+
+
+
+// published not defined while posting blogs
+//  latest blogs not loading: proprs undefined error
+//  url not found error in popular authors 
