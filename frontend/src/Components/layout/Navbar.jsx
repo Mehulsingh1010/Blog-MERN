@@ -87,7 +87,7 @@ const Navbar = () => {
                 <MdDarkMode className="dark-icon" />
               )}
             </button>
-            {isAuthenticated && user.role === "Author" ? (
+            {user && user.role && (
               <Link
                 to={"/dashboard"}
                 onClick={handleNavbar}
@@ -95,8 +95,6 @@ const Navbar = () => {
               >
                 DASHBOARD
               </Link>
-            ) : (
-              ""
             )}
             {!isAuthenticated ? (
               <Link to={"/login"} onClick={handleNavbar} className="login-btn">

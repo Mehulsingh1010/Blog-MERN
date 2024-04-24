@@ -26,15 +26,17 @@ const AllAuthors = () => {
       <h2>ALL AUTHORS</h2>
       <div className="container">
         {authors && authors.length > 0 ? (
-          authors.map((element) => {
+          authors.map((author) => {
             return (
-              <div className="card" key={element._id}>
-                {/* {authors && authors.avatar && ( */}
-                  {/* <img src={element.avatar.url} alt="author_avatar" /> */}
-                {/* )} */}
-                <h3>{element.name}</h3>
-                <p>{element.role}</p>
-              </div>
+              <div className="card" key={author._id}>
+            {author.avatar && author.avatar.url ? (
+              <img src={author.avatar.url} alt="author" />
+            ) : (
+              <div>No Image Available</div>
+            )}
+            <p>{author.name}</p>
+            <p>{author.role}</p>
+          </div>
             );
           })
         ) : (

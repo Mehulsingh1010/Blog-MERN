@@ -4,33 +4,49 @@ import { BeatLoader } from "react-spinners";
 
 const PopularAuthors = () => {
   const [authors, setAuthors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchAuthors = async () => {
-      const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/authors",
-        { withCredentials: true }
-      );
-      setAuthors(data.authors);
+      try {
+        const { data } = await axios.get(
+          "http://localhost:4000/api/v1/user/authors",
+          { withCredentials: true }
+        );
+        setAuthors(data.authors);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchAuthors();
   }, []);
+
+  if (loading) {
+    return <BeatLoader color="gray" size={30} />;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <section className="popularAuthors">
       <h3>Popular Authors</h3>
       <div className="container">
-        {authors && authors.length > 0 ? (
-          authors.slice(0, 4).map((element) => {
-            return (
-              <div className="card" key={element._id}>
-                {/* <img src={element.avatar.url} alt="author" /> */}
-                <p>{element.name}</p>
-                <p>{element.role}</p>
-              </div>
-            );
-          })
-        ) : (
-          <BeatLoader color="gray" size={30} />
-        )}
+        {authors.slice(0, 4).map((author) => (
+          <div className="card" key={author._id}>
+            {author.avatar && author.avatar.url ? (
+              <img src={author.avatar.url} alt="author" />
+            ) : (
+              <div>No Image Available</div>
+            )}
+            <p>{author.name}</p>
+            <p>{author.role}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

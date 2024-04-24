@@ -1,7 +1,7 @@
 export const sendToken = (user, statusCode, message, res) => {
   const token = user.getJWTToken();
   const options = {
-    expiresIn: process.env.JWT_EXPIRES, // Use expiresIn instead of expires
+    expiresIn: process.env.COOKIE_EXPIRES, // Use expiresIn instead of expires
     httpOnly: true,
   };
   res.status(statusCode).cookie("token", token, options).json({

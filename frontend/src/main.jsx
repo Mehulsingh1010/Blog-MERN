@@ -8,8 +8,8 @@ export const Context = createContext({
 });
 
 const Appwrap = () => {
-  const [isAuthenticated, setisAuthenticated] = useState(false);
-  const [user, setuser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState({});
   const [blogs, setBlogs] = useState({});
   const [mode, setMode] = useState("dark");
 
@@ -17,9 +17,9 @@ const Appwrap = () => {
     <Context.Provider
       value={{
         isAuthenticated,
-        setisAuthenticated,
+        setIsAuthenticated,
         user,
-        setuser,
+        setUser,
         blogs,
         setBlogs,
         mode,

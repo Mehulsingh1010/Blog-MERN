@@ -5,6 +5,8 @@ import HeroSection from '../miniComponents/HeroSection';
 import TrendingBlogs from "../miniComponents/TrendingBlog";
 import LatestBlogs from "../miniComponents/LatestBlog";
 import PopularAuthors from "../miniComponents/PopularAuthor";
+import Blogs from './Blogs';
+import insert from '../miniComponents/insert';
 
 const Home = () => {
   const {mode, blogs} = useContext(Context);
@@ -12,7 +14,8 @@ const Home = () => {
 <article className={mode === "dark" ? "dark-bg" : "light-bg"}>
         <HeroSection />
         <TrendingBlogs />
-        <LatestBlogs heading={"Latest Blogs"} />
+        {/* <LatestBlogs heading={"Latest Blogs"} /> */}
+        <Blogs />
         <PopularAuthors />
       </article>
   )
