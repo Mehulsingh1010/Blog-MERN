@@ -36,6 +36,7 @@ export const blogpost = catchAsyncErrors(async (req, res, next) => {
     paraThreeDescription,
     paraThreeTitle,
     category,
+    published,
   } = req.body;
   const createdBy = req.user._id;
   const authorName = req.user.name;

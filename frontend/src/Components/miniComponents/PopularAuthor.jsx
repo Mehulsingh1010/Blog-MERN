@@ -34,7 +34,7 @@ const PopularAuthors = () => {
 
   return (
     <section className="popularAuthors">
-      <h3>Popular Authors</h3>
+      <h3 className="middle1">Popular Authors</h3>
       <div className="container">
         {authors.slice(0, 4).map((author) => (
           <div className="card" key={author._id}>
@@ -44,7 +44,6 @@ const PopularAuthors = () => {
               <div>No Image Available</div>
             )}
             <p>{author.name}</p>
-            <p>{author.role}</p>
           </div>
         ))}
       </div>

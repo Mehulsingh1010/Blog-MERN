@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="container">
-        <div className="logo">ZETA <span>BLOG</span></div>
+        <div className="logo">      <span>Blog</span> Verse</div>
         <div className="links">
           <Link to={"/"} target="_blank">
             <AiFillInstagram />

@@ -37,6 +37,7 @@ h2 {
   font-size: 1.7rem;
 }
 h3 {
+  
   font-size: 1.5rem;
   /* margin-left: 50px; */
 }
@@ -60,16 +61,18 @@ h4 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+  
+  
 }
 .blogs .container .card {
+  padding-bottom: 30px;
   width: 370px;
   min-height: 370px;
   max-height: 500px;
   padding: 10px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   border-radius: 8px;
   text-decoration: none;
-
 }
 
 .blogs .container .card img {
@@ -106,6 +109,7 @@ h4 {
   gap: 15px;
   font-weight: 300;
   color: gray;
+  
 }
 .blogs .container .card .writer_section .author img {
   width: 50px;
@@ -745,6 +749,7 @@ footer .container .about,
 footer .container .quick_links,
 footer .container .categories,
 footer .container .news_letter {
+  margin-top: 80px;
   flex: 1;
 }
 footer .container .about,
@@ -1673,4 +1678,16 @@ footer .container:last-child .links a svg {
   padding-left: 30px;
   background-color: #181A2A;
   color:white
+}
+.middle{
+   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.middle1{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 30px;
 }

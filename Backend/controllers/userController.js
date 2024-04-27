@@ -72,8 +72,9 @@ export const login = catchAsyncErrors(async(req,res,next)=>{
         return next(new Errorhandler("Invalid email / password",400))
     };
     if(user.role!==role){
-        return next(new Errorhandler("User with provided role (${role}) not found",400 ));
-    }
+      return next(
+        new Errorhandler(`User with provided role(${role}) not found`, 400)
+      );    }
     // res.status(200).json({
     //     success:true,
     //     message:"User logged in ! ",
