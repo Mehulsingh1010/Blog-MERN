@@ -16,6 +16,7 @@ import Footer from "./Components/layout/Footer";
 import { Context } from "./main";
 import axios from "axios";
 import { Toaster } from "react-hot-toast";
+
 const App = () => {
   const { setUser, isAuthenticated, setIsAuthenticated, user, setBlogs } =
     useContext(Context);
@@ -71,4 +72,5 @@ const App = () => {
     </>
   );
 };
+
 export default App;
