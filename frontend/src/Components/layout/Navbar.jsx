@@ -47,7 +47,8 @@ const Navbar = () => {
     >
       <nav>
         <div className="logo">
-          <span>Blog</span> Verse
+          <Link to={"/"}>
+          <span>Blog</span> Verse</Link>
         </div>
         <div className={show ? "links show" : "links"}>
           <ul>

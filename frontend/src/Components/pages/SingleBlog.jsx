@@ -25,8 +25,7 @@ const SingleBlog = () => {
   }, []);
   if (!isAuthenticated) {
     alert("To access this content , please Login");
-    return (<Navigate to={"/"} />);
-    
+    return <Navigate to={"/"} />;
   }
   return (
     <article
@@ -42,34 +41,46 @@ const SingleBlog = () => {
               <p>{blog.authorName}</p>
             </div>
           </div>
-          {blog && blog.mainImage && (
-            <img
-              src={blog.mainImage.url}
-              alt="mainBlogImg"
-              className="mainImg"
-            />
-          )}
-          <p className="intro-text">{blog.intro}</p>
-          <div className="sub-para">
-            <h3>{blog.paraOneTitle}</h3>
-            {blog && blog.paraOneImage && (
-              <img src={blog.paraOneImage.url} alt="paraOneImg" />
+          <div className="firstsec">
+            {blog && blog.mainImage && (
+              <img
+                src={blog.mainImage.url}
+                alt="mainBlogImg"
+                className="mainImg"
+              />
             )}
-            <p>{blog.paraOneDescription}</p>
+            <p className="intro-text">{blog.intro}</p>
+          </div>
+
+          <div className="sub-para">
+            <div className="fst">
+              <h3>
+                {blog.paraOneTitle}</h3>
+                <p>{blog.paraOneDescription}</p>
+              
+            </div>
+            <div className="snd">
+              {" "}
+              {blog && blog.paraOneImage && (
+                <img src={blog.paraOneImage.url} alt="paraOneImg" />
+              )}
+            </div>
           </div>
           <div className="sub-para">
-            <h3>{blog.paraTwoTitle}</h3>
-            {blog && blog.paraTwoImage && (
+            <div className="fst">  {blog && blog.paraTwoImage && (
               <img src={blog.paraTwoImage.url} alt="paraOneImg" />
-            )}
-            <p>{blog.paraThreeDescription}</p>
+            )}</div>
+            <div className="snd">  <h3>{blog.paraTwoTitle}</h3> 
+            <p>{blog.paraThreeDescription}</p></div>
           </div>
           <div className="sub-para">
-            <h3>{blog.paraThreeTitle}</h3>
-            <p>{blog.paraThreeDescription}</p>
+            <div className="fst"> <h3>{blog.paraThreeTitle}</h3>
+            <p>{blog.paraThreeDescription}</p></div>
+            <div className="snd">    
             {blog && blog.paraThreeImage && (
               <img src={blog.paraThreeImage.url} alt="paraOneImg" />
-            )}
+            )}</div>
+       
           </div>
         </section>
       )}

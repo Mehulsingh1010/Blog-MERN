@@ -8,7 +8,7 @@ import { Context } from "../../main";
 const Footer = () => {
   const isDashboard = useLocation("http://localhost:5173/dashboard");
   const { mode, setMode } = useContext(Context);
-
+ 
   return (
     <footer
       className={
@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
         <div className="news_letter">
           <div>
-            <h3>Weekly Newletter</h3>
+            <h3>Weekly Newsletter</h3>
             <p>Get blog articles and offer via email</p>
           </div>
           <div>
@@ -74,7 +74,7 @@ const Footer = () => {
           <Link to={"/"} target="_blank">
             <FaGitSquare />
           </Link>
-          <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
+          <Link to={"/"} target="_blank">
             <AiFillYoutube />
           </Link>
           <Link to={"/"} target="_blank">
@@ -85,5 +85,7 @@ const Footer = () => {
     </footer>
   );
 };
+
+
 
 export default Footer;

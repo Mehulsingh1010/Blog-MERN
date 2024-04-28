@@ -53,7 +53,7 @@ body {
   img {
       /* -webkit-animation: adjustHue 10s infinite;
       -moz-animation: adjustHue 10s infinite; */
-      animation: adjustHue 10s infinite;
+      /* animation: adjustHue 10s infinite; */
   }
   
   @-webkit-keyframes adjustHue { 
